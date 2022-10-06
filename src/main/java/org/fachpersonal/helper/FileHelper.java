@@ -3,7 +3,7 @@ package org.fachpersonal.helper;
 import java.io.*;
 
 public class FileHelper {
-    public static String getFileContent(String path) {
+    public static String readFile(String path) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(path));
             String line;
@@ -19,8 +19,8 @@ public class FileHelper {
         }
     }
 
-    public static String[] getFileContentLines(String path) {
-        String content = getFileContent(path);
+    public static String[] readLines(String path) {
+        String content = readFile(path);
         if(content.contains("\n")) {
             return content.split("\n");
         }
