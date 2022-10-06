@@ -26,4 +26,26 @@ public class FileHelper {
         }
         return null;
     }
+
+    public static boolean write(String[] content, String path) {
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(path));
+            for (String s : content) {
+                bw.write(s);
+                bw.newLine();
+            }
+            bw.close();
+            return true;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean write(String content, String path) {
+        if(content.contains("\n")) {
+            return write(content.split("\n"),path);
+        } else {
+            return write(new String[] {content},path);
+        }
+    }
 }
