@@ -8,8 +8,7 @@ public class FileHelper {
             BufferedReader br = new BufferedReader(new FileReader(path));
             String line;
             StringBuilder result = new StringBuilder();
-            while((line = br.readLine()) != null)
-            {
+            while ((line = br.readLine()) != null) {
                 result.append(line).append("\n");
             }
             br.close();
@@ -21,10 +20,10 @@ public class FileHelper {
 
     public static String[] readLines(String path) {
         String content = readFile(path);
-        if(content.contains("\n")) {
+        if (content.contains("\n")) {
             return content.split("\n");
         }
-        return null;
+        return new String[]{content};
     }
 
     public static boolean write(String[] content, String path) {
@@ -42,10 +41,10 @@ public class FileHelper {
     }
 
     public static boolean write(String content, String path) {
-        if(content.contains("\n")) {
-            return write(content.split("\n"),path);
+        if (content.contains("\n")) {
+            return write(content.split("\n"), path);
         } else {
-            return write(new String[] {content},path);
+            return write(new String[]{content}, path);
         }
     }
 }

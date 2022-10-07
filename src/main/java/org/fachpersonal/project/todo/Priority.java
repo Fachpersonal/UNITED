@@ -5,7 +5,7 @@ public enum Priority {
     MINOR(1),
     MAJOR(2);
 
-    private int id;
+    private final int id;
 
     Priority(int id) {
         this.id = id;
@@ -14,4 +14,5 @@ public enum Priority {
     public int getID() {
         return id;
     }
+
 }
