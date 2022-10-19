@@ -7,6 +7,8 @@ import org.fachpersonal.project.todo.Priority;
 import org.fachpersonal.project.todo.TODO;
 import org.fachpersonal.project.todo.Type;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Main {
@@ -15,8 +17,8 @@ public class Main {
     private final Scanner in;
 
     public Main() {
-        this.admin = new Account("admin", "Admin", true);
-        this.proj = new Project("Assistant", "ASSI", this.admin, null, "Assistant halt");
+        this.admin = new Account("admin", "admin", true);
+        this.proj = new Project("United", "UNI", this.admin, null, "Assistant halt");
         this.in = new Scanner(System.in);
 
         String cmd;
@@ -62,16 +64,30 @@ public class Main {
         OptionsChooser<Priority> priorityOptionsChooser = new OptionsChooser<>(Priority.class.getEnumConstants());
         Type type = (Type) typeOptionsChooser.chooseOption(in);
         Priority priority = (Priority) priorityOptionsChooser.chooseOption(in);
-        System.out.print("Title >> ");
-        String title = in.nextLine();
-        System.out.print("Description >> ");
-        String description = in.nextLine();
+        String title = null;
+        String description = null;
+        do {
+            in.nextLine(); // ?? For some reason it skips this
+            System.out.print("Title >> ");
+            title = in.nextLine();
+            System.out.print("Description >> ");
+            description = in.nextLine();
+        } while (title == null || description == null);
         proj.getTodos().add(new TODO(type, admin, null, priority, proj, title, description));
+        System.out.println("TODO successfully created!");
+        for (int i = 0; i < proj.getTodos().size(); i++) {
+            System.out.println(proj.getTodos().get(i).toString());
+        }
     }
 
     private void removeTODO() {
+        OptionsChooser<TODO> todoChooser = new OptionsChooser<TODO>((TODO[])(proj.getTodos().toArray()));
+        proj.getTodos().remove(todoChooser.chooseOption(in));
     }
 
     private void showTODO() {
+        for(TODO t : proj.getTodos()) {
+            System.out.println(t.toString());
+        }
     }
 }

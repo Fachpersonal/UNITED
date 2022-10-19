@@ -25,7 +25,6 @@ public class TODO {
         this.title = title;
         this.description = description;
         this.issueTag = project.getIssue_Name() + "-" + (project.getTodos().size() + 1);
-        project.getTodos().add(this);
     }
 
     public String getIssueTag() {
@@ -79,4 +78,6 @@ public class TODO {
     public void setState(State state) {
         this.state = state;
     }
+
+    public String toString() {return type.toString() +" | "+ createdBy.getFirstName() +" "+ createdBy.getSurName() +" | "+ priority +" | "+ issueTag +" | "+ project.getProj_Name() +" | "+ assignee +" | "+ state +" | "+ title +" | "+ description;}
 }

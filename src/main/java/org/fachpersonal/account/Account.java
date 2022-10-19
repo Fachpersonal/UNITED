@@ -1,5 +1,7 @@
 package org.fachpersonal.account;
 
+import org.fachpersonal.helper.FileHelper;
+
 import java.time.LocalDateTime;
 
 public class Account {
@@ -7,10 +9,15 @@ public class Account {
     private final String surName;
     private final LocalDateTime joined;
 
-    public Account(String firstName, String surName) {
+    public Account(String firstName, String surName, boolean newAccount) {
         this.firstName = firstName;
         this.surName = surName;
-        this.joined = LocalDateTime.now();
+        this.joined = (newAccount ? LocalDateTime.now() : null);
+    }
+
+    public static Account loadAccount() {
+        FileHelper.readLines("");
+        return null;
     }
 
     public String getFirstName() {
