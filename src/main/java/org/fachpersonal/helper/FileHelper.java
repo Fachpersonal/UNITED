@@ -2,7 +2,19 @@ package org.fachpersonal.helper;
 
 import java.io.*;
 
+/**
+ * FileHelper for United Assistant
+ *
+ * @author Fachpersonal
+ * @version 0.1
+ * @since 06.10.2022
+ */
 public class FileHelper {
+    /**
+     * Reads file and return its content as a whole String
+     * @param path
+     * @return content of file as whole String
+     */
     public static String readFile(String path) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(path));
@@ -18,6 +30,11 @@ public class FileHelper {
         }
     }
 
+    /**
+     * reads file and saves its content as Strings (line per line) in an Array
+     * @param path
+     * @return content of files saved in an Array
+     */
     public static String[] readLines(String path) {
         String content = readFile(path);
         if (content.contains("\n")) {
@@ -26,6 +43,12 @@ public class FileHelper {
         return new String[]{content};
     }
 
+    /**
+     * Writes content to file
+     * @param content
+     * @param path
+     * @return false if it couldn't write to file
+     */
     public static boolean write(String[] content, String path) {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(path));
@@ -40,6 +63,12 @@ public class FileHelper {
         }
     }
 
+    /**
+     * Writes content to file
+     * @param content
+     * @param path
+     * @return false if it couldn't write to file
+     */
     public static boolean write(String content, String path) {
         if (content.contains("\n")) {
             return write(content.split("\n"), path);

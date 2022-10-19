@@ -2,7 +2,13 @@ package org.fachpersonal.project.todo;
 
 import org.fachpersonal.account.Account;
 import org.fachpersonal.project.Project;
-
+/**
+ * To-Do class which allows to save and manage To-Dos
+ *
+ * @author Fachpersonal
+ * @version 0.1
+ * @since 06.10.2022
+ */
 public class TODO {
 
     private final Type type;
@@ -15,6 +21,16 @@ public class TODO {
     private String title;
     private String description;
 
+    /**
+     * Constructor of To-Do
+     * @param type
+     * @param createdBy
+     * @param assignee
+     * @param priority
+     * @param project
+     * @param title
+     * @param description
+     */
     public TODO(Type type, Account createdBy, Account assignee, Priority priority, Project project, String title, String description) {
         this.type = type;
         this.createdBy = createdBy;
@@ -79,5 +95,8 @@ public class TODO {
         this.state = state;
     }
 
+    /**
+     * @return All infos about To-Do
+     */
     public String toString() {return type.toString() +" | "+ createdBy.getFirstName() +" "+ createdBy.getSurName() +" | "+ priority +" | "+ issueTag +" | "+ project.getProj_Name() +" | "+ assignee +" | "+ state +" | "+ title +" | "+ description;}
 }

@@ -7,18 +7,25 @@ import org.fachpersonal.project.todo.Priority;
 import org.fachpersonal.project.todo.TODO;
 import org.fachpersonal.project.todo.Type;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
+/**
+ * Main class which allows to run UNITED Assistant
+ * @author Fachpersonal
+ * @version 0.1
+ * @since 06.10.2022
+ */
 public class Main {
     private final Account admin;
     private final Project proj;
     private final Scanner in;
 
+    /**
+     * Constructor of Main
+     */
     public Main() {
         this.admin = new Account("admin", "admin", true);
-        this.proj = new Project("United", "UNI", this.admin, null, "Assistant halt");
+        this.proj = new Project("UNITED", "UNI", this.admin, null, "Assistant halt");
         this.in = new Scanner(System.in);
 
         String cmd;
@@ -46,10 +53,17 @@ public class Main {
         }
     }
 
+    /**
+     * main method
+     * @param args
+     */
     public static void main(String[] args) {
         new Main();
     }
 
+    /**
+     * Help menu
+     */
     private static void help() {
         System.out.println("---+=:: TODO ::=+---");
         System.out.println("\thelp\t-\tthis menu");
@@ -59,6 +73,9 @@ public class Main {
         System.out.println("---+=:: TODO ::=+---");
     }
 
+    /**
+     * Allows to create a To-Do Object
+     */
     private void createTODO() {
         OptionsChooser<Type> typeOptionsChooser = new OptionsChooser<>(Type.class.getEnumConstants());
         OptionsChooser<Priority> priorityOptionsChooser = new OptionsChooser<>(Priority.class.getEnumConstants());
@@ -80,11 +97,17 @@ public class Main {
         }
     }
 
+    /**
+     * Allows to remove a To-Do
+     */
     private void removeTODO() {
         OptionsChooser<TODO> todoChooser = new OptionsChooser<TODO>((TODO[])(proj.getTodos().toArray()));
         proj.getTodos().remove(todoChooser.chooseOption(in));
     }
 
+    /**
+     * Displays all saved To-Dos
+     */
     private void showTODO() {
         for(TODO t : proj.getTodos()) {
             System.out.println(t.toString());
