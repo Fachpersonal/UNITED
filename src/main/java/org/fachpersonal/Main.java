@@ -3,9 +3,6 @@ package org.fachpersonal;
 import org.fachpersonal.account.Account;
 import org.fachpersonal.helper.OptionsChooser;
 import org.fachpersonal.project.Project;
-import org.fachpersonal.project.todo.Priority;
-import org.fachpersonal.project.todo.TODO;
-import org.fachpersonal.project.todo.Type;
 
 import java.util.Scanner;
 
