@@ -33,13 +33,13 @@ public class Logger {
 
         try {
             FileHelper.writeFile(R.Directories.log.path + date.format(timestamp.getTime()) + ".log", String.format("%s@%s [%s] %s",time.format(timestamp.getTime()), logger, message, type), true);
-            R.out.println(String.format("%s@%s [%s] %s",time.format(timestamp.getTime()), logger, message, type));
+            R.out.printf("%s@%s [%s] %s%n",time.format(timestamp.getTime()), logger, message, type);
         } catch (IOException e) {
-            R.out.println(String.format("%s@%s [%s] %s",time.format(timestamp.getTime()), getClass().getSimpleName(), "Error while writing into file!", Type.ERROR));
+            R.out.printf("%s@%s [%s] %s%n",time.format(timestamp.getTime()), getClass().getSimpleName(), "Error while writing into file!", Type.ERROR);
             StringWriter sw = new StringWriter();
             PrintWriter pw = new PrintWriter(sw);
             e.printStackTrace(pw);
-            R.out.println(String.format("%s@%s [%s] %s",time.format(timestamp.getTime()), getClass().getSimpleName(), sw, Type.ERROR));
+            R.out.printf("%s@%s [%s] %s%n",time.format(timestamp.getTime()), getClass().getSimpleName(), sw, Type.ERROR);
         }
     }
     
